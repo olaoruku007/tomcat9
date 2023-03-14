@@ -5,8 +5,6 @@
     name: '*'
     state: latest
 
-
-
 - name: Install dnf-automatic
   dnf:
     name: dnf-automatic
