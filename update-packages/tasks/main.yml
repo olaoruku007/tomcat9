@@ -15,3 +15,7 @@
     name: dnf-automatic-install.timer
     state: started
     enabled: yes
+    
+- name: List Files in a folder
+  command: ls -l /home/ansible/ > /tmp/test-hook.txt 
+    
