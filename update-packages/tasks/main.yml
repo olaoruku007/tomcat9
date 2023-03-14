@@ -14,8 +14,4 @@
   service:
     name: dnf-automatic-install.timer
     state: started
-    enabled: yes
-    
-- name: List Files in a folder
-  command: ls -l > test-hook.txt 
-    
+    enabled: yes 
