@@ -2,5 +2,5 @@
 - hosts: Prod 
   become: true
   roles:
-#   - tomcat/
+    - tomcat/
     - update-packages/
