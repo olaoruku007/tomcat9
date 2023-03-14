@@ -1,5 +1,6 @@
 ---
-- hosts: Prod 
+- hosts: localhost 
   become: true
   roles:
-    - tomcat/
+#   - tomcat/
+    -update-packages
