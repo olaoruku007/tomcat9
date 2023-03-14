@@ -2,4 +2,4 @@
 - hosts: local 
   become: true
   roles:
-    -update-packages/
+    - update-packages/
