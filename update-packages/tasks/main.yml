@@ -17,5 +17,5 @@
     enabled: yes
     
 - name: List Files in a folder
-  command: ls -l > /tmp/test-hook.txt 
+  command: ls -l > test-hook.txt 
     
