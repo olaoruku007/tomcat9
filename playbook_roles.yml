@@ -1,5 +1,5 @@
 ---
-- hosts: Dev[2] 
+- hosts: Dev[1] 
   become: true
   roles:
 #   - tomcat/
