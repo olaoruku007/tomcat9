@@ -1,1 +1,24 @@
+- name: Download WordPress
+  get_url:
+        url: https://wordpress.org/latest.tar.gz
+        dest: /tmp
 
+- name: Extrat WordPress
+  unarchive:
+        src: /tmp/wordpress-6.1.1.tar.gz
+        dest: /tmp
+        remote_src: yes
+
+- name: Copy WordPress Directory to /var/www/html directory
+  copy:
+        src: /tmp/wordpress/
+        dest: /var/www/html/
+        remote_src: yes
+        owner: apache
+        group: apache
+        mode: 0755
+
+- name: Restart Apache
+  systemd:
+        name: httpd
+        state: restarted
