@@ -4,16 +4,15 @@
 #    - vars.yml
 
 #  tasks:
-  - command: dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm  -y
+- command: dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm  -y
 
-
-  - name: Install the latest Apache
-    dnf:
+- name: Install the latest Apache
+  dnf:
         name: httpd
         state: latest
 
-  - name: Install mySQL and PHP
-    dnf:
+- name: Install mySQL and PHP
+  dnf:
         name:
           - php
           - php-mysqlnd
@@ -27,56 +26,56 @@
           - php-curl
         state: present
 
-  - name: Install Python3-pip
-    yum:
+- name: Install Python3-pip
+  yum:
         name: python3-pip
         state: present
 
 
-  - name: Install PyMySQL
-    pip:
+- name: Install PyMySQL
+  pip:
         name: PyMySQL
         state: present
 
 
-  - name: Start Apache(httpd) and persist reboot
-    service:
+- name: Start Apache(httpd) and persist reboot
+  service:
         name: httpd
         state: started
         enabled: true
 
 
-  - name: Start mySQL and persist reboot
-    service:
+- name: Start mySQL and persist reboot
+  service:
         name: mysqld
         state: started
         enabled: true
 
-  - name: Start php-fpm and persist reboot
-    service:
+- name: Start php-fpm and persist reboot
+  service:
         name: php-fpm
         state: started
         enabled: true
 
 
 
-  - name: Secure MySQL installation
-    mysql_user:
+- name: Secure MySQL installation
+  mysql_user:
         name: root
         password: "{{ mysql_root_password }}"
         host: localhost
         login_password: "adeola"
         state: present
 
-  - name: Create MySQL database
-    mysql_db:
+- name: Create MySQL database
+  mysql_db:
         name: "{{ db_name }}"
         state: present
         login_user: root
         login_password: "{{ mysql_root_password }}"
 
-  - name: Create MySQL user
-    mysql_user:
+- name: Create MySQL user
+  mysql_user:
         name: "{{ db_user }}"
         password: "{{ db_password }}"
         priv: "{{ db_name }}.*:ALL"
