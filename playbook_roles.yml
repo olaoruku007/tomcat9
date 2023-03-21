@@ -3,6 +3,6 @@
   become: true
   roles:
 #   - tomcat/
-    - WordPress/
     - update-packages/
     - LAMP/
+    - Wordpress/
