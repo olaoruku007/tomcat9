@@ -1,5 +1,5 @@
 ---
-- name: Deploy and Configure LAMP on EC2
+# name: Deploy and Configure LAMP on EC2
   vars_files:
     - vars.yml
 
