@@ -1,1 +1,41 @@
+pipeline {
+  agent any
+  stages {
+    stage('Clone Git Repo') {
+	    steps {
+	      git branch: 'main', url: 'https://github.com/olaoruku007/tomcat9.git'
+	    }
+	  }
+	
+    stage('Update Packages on EC2') {
+      steps {
+	      ansiblePlaybook credentialsId: 'Ansible', installation: 'ansible_auto', inventory: '/home/tomcat/.jenkins/workspace/Package_update_Pipeline/hosts', playbook: '/home/tomcat/.jenkins/workspace/Package_update_Pipeline/playbook_roles.yml'
+      }
+    }
 
+    
+    stage('Install and Start Firewalld') {
+      steps {
+	      ansiblePlaybook credentialsId: 'Ansible', installation: 'ansible_auto', inventory: '/home/tomcat/.jenkins/workspace/Install and Start Firewalld/hosts', playbook: '/home/tomcat/.jenkins/workspace/Install and Start Firewalld/playbook_roles.yml'
+      }
+    }
+    
+    
+    
+    
+    stage('Deploy and Configure LAMP on EC2') {
+      steps {
+	      ansiblePlaybook credentialsId: 'Ansible', installation: 'ansible_auto', inventory: '/home/tomcat/.jenkins/workspace/LAMP_Deployment_On_EC2/hosts', playbook: '/home/tomcat/.jenkins/workspace/LAMP_Deployment_On_EC2/playbook_roles.yml'
+      }
+	    
+    }
+    
+    stage('Deploy and Configure WordPress on EC2') {
+      steps {
+	      ansiblePlaybook credentialsId: 'Ansible', installation: 'ansible_auto', inventory: '/home/tomcat/.jenkins/workspace/Deploy_and_Configure_WordPress_On_EC2/hosts', playbook: '/home/tomcat/.jenkins/workspace/Deploy_and_Configure_WordPress_On_EC2/playbook_roles.yml'
+      }
+    }
+       
+  }
+  
+}
