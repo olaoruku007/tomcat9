@@ -4,4 +4,4 @@
   roles:
 #   - tomcat/
     - update-packages/
-#   - LAMP/
+    - LAMP/
