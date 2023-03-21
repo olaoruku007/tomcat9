@@ -1,5 +1,5 @@
 ---
-- name: Deploy WordPress on EC2
+- name: Deploy and Configure LAMP on EC2
   hosts: Dev[2]
   vars_files:
     - vars.yml
