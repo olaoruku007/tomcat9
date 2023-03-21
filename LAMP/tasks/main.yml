@@ -1,10 +1,7 @@
 ---
 - name: Deploy and Configure LAMP on EC2
-  hosts: Dev[2]
   vars_files:
     - vars.yml
-  become: true
-
 
   tasks:
     - command: dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm  -y
