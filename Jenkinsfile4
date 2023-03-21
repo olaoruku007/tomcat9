@@ -7,23 +7,24 @@ pipeline {
 	    }
 	  }
 	
-	  stage('Update Packages on EC2') {
-	    steps {
+    stage('Update Packages on EC2') {
+      steps {
 	      ansiblePlaybook credentialsId: 'Ansible', installation: 'ansible_auto', inventory: '/home/tomcat/.jenkins/workspace/Package_update_Pipeline/hosts', playbook: '/home/tomcat/.jenkins/workspace/Package_update_Pipeline/playbook_roles.yml'
-	    }
-	  }
+      }
+    }
 
     stage('Deploy and Configure LAMP on EC2') {
-	    steps {
+      steps {
 	      ansiblePlaybook credentialsId: 'Ansible', installation: 'ansible_auto', inventory: '/home/tomcat/.jenkins/workspace/Package_update_Pipeline/hosts', playbook: '/home/tomcat/.jenkins/workspace/Package_update_Pipeline/playbook_roles.yml'
-	    }
-	  }
+      }
+	    
+    }
     
     stage('Deploy and Configure WordPress on EC2') {
-	    steps {
+      steps {
 	      ansiblePlaybook credentialsId: 'Ansible', installation: 'ansible_auto', inventory: '/home/tomcat/.jenkins/workspace/Package_update_Pipeline/hosts', playbook: '/home/tomcat/.jenkins/workspace/Package_update_Pipeline/playbook_roles.yml'
-	    }
-	  }
+      }
+    }
        
   }
   
