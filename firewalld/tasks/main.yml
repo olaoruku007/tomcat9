@@ -1,12 +1,12 @@
 - name: Install Firewalld
   dnf:
     name: firewalld
-    state: present
+    state: absent
 
 
 - name: Start Firewalld
   service:
     name: firewalld
-    state: started
-    enabled: yes
+    state: stopped
+    enabled: no
 
