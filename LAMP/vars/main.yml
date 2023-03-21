@@ -1,0 +1,6 @@
+mysql_root_password: adeola
+db_name: wp
+db_user: admin
+db_password: adeola
+wp_db_host: localhost
+wp_db_prefix: wp_
