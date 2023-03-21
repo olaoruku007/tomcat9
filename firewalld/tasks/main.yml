@@ -7,6 +7,6 @@
 - name: Start Firewalld
   service:
     name: firewalld
-    state: stopped
-    enabled: no
+    state: disabled
+    
 
