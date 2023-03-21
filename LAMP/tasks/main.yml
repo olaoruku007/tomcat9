@@ -1,0 +1,89 @@
+---
+- name: Deploy WordPress on EC2
+  hosts: Dev[2]
+  vars_files:
+    - vars.yml
+  become: true
+
+
+  tasks:
+    - command: dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm  -y
+
+
+    - name: Install the latest Apache
+      dnf:
+        name: httpd
+        state: latest
+
+    - name: Install mySQL and PHP
+      dnf:
+        name:
+          - php
+          - php-mysqlnd
+          - mysql-server
+          - wget
+          - php-soap
+          - php-gd
+          - php-intl
+          - php-opcache
+          - php-zip
+          - php-curl
+        state: present
+
+    - name: Install Python3-pip
+      yum:
+        name: python3-pip
+        state: present
+
+
+    - name: Install PyMySQL
+      pip:
+        name: PyMySQL
+        state: present
+
+
+    - name: Start Apache(httpd) and persist reboot
+      service:
+        name: httpd
+        state: started
+        enabled: true
+
+
+    - name: Start mySQL and persist reboot
+      service:
+        name: mysqld
+        state: started
+        enabled: true
+
+    - name: Start php-fpm and persist reboot
+      service:
+        name: php-fpm
+        state: started
+        enabled: true
+
+
+
+    - name: Secure MySQL installation
+      mysql_user:
+        name: root
+        password: "{{ mysql_root_password }}"
+        host: localhost
+        login_password: "adeola"
+        state: present
+
+    - name: Create MySQL database
+      mysql_db:
+        name: "{{ db_name }}"
+        state: present
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+
+    - name: Create MySQL user
+      mysql_user:
+        name: "{{ db_user }}"
+        password: "{{ db_password }}"
+        priv: "{{ db_name }}.*:ALL"
+        host: "{{ wp_db_host }}"
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+        state: present
