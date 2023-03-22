@@ -15,7 +15,7 @@ pipeline {
   
     
     
-    stage('Deploy and Configure LAMP on EC2') {
+    stage('Deploy and Configure LAMP Stack on EC2') {
       steps {
 	      ansiblePlaybook credentialsId: 'Ansible', installation: 'ansible_auto', inventory: '/home/tomcat/.jenkins/workspace/LAMP_Deployment_On_EC2/hosts', playbook: '/home/tomcat/.jenkins/workspace/LAMP_Deployment_On_EC2/playbook_roles.yml'
       }
