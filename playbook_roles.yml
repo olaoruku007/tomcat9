@@ -4,6 +4,6 @@
   roles:
 #   - tomcat/
 #   - update-packages/
-    - firewalld
+#   - firewalld
 #   - LAMP/
 #   - WordPress/
