@@ -1,0 +1,48 @@
+---
+- hosts: Test[1]
+  become: true
+
+
+  vars:
+    ansible_ssh_pass: "ansible"
+    new_user: "ansible"
+
+  tasks:
+  - name: Install sshpass
+    yum:
+      name: sshpass
+      state: present
+
+  - name: Create new user
+    user:
+      name: "{{ new_user }}"
+      password: "{{ new_user | password_hash('sha512') }}"
+      shell: /bin/bash
+      createhome: yes
+      home: /home/{{ new_user }}
+
+
+  - name: Add ansible user to sudoers file
+    lineinfile:
+      dest: /etc/sudoers
+      state: present
+      line: "ansible ALL=(ALL:ALL) NOPASSWD:ALL"
+
+  - name: Add ec2-user to sudoers file
+    lineinfile:
+      dest: /etc/sudoers
+      state: present
+      line: "ec2-user ALL=(ALL:ALL) NOPASSWD:ALL"
+
+  - name: Configure sshd to use key-based authentication
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^PasswordAuthentication'
+      line: 'PasswordAuthentication yes'
+
+
+
+  - name: Reload sshd service
+    service:
+      name: sshd
+      state: reloaded
