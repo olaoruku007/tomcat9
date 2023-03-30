@@ -1,0 +1,19 @@
+---
+- hosts: Test[1]
+  become: true
+  vars:
+    ansible_ssh_private_key_file: /home/ec2-user/Dev_KP.pem
+
+  tasks:
+  - name: make directory
+    file:
+      path: "/home/ec2-user/.ssh"
+      state: directory
+  - name: create empty file
+    file:
+      path: "/home/ec2-user/.ssh/authorized_keys"
+      state: touch
+  - name: put pubkey
+    lineinfile:
+      path: "/home/ec2-user/.ssh/authorized_keys"
+      line: "your id_rsa.pub"
