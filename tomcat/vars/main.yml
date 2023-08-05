@@ -1,9 +1,9 @@
 ---
 # vars file for tomcat9
 
-tomcat_link: https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.60/bin/apache-tomcat-9.0.60.tar.gz
+tomcat_link: https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.76/bin/apache-tomcat-9.0.76.tar.gz
 
-tomcat_pkg: apache-tomcat-9.0.60.tar.gz
+tomcat_pkg: apache-tomcat-9.0.76.tar.gz
 
 port: "8080"
 
@@ -13,13 +13,13 @@ zone: "public"
 
 users_xml: tomcat/files/tomcat-users.xml
 
-conf_link: /opt/tomcat/apache-tomcat-9.0.60/conf
+conf_link: /opt/tomcat/apache-tomcat-9.0.76/conf
 
 context_xml: tomcat/files/context.xml
 
-meta_inf: /opt/tomcat/apache-tomcat-9.0.60/webapps/manager/META-INF/context.xml
+meta_inf: /opt/tomcat/apache-tomcat-9.0.76/webapps/manager/META-INF/context.xml
 
-jenkins_pkg: https://get.jenkins.io/war/2.373/jenkins.war
+jenkins_pkg: https://get.jenkins.io/war/2.401.2/jenkins.war
 
 
-webapps_link: /opt/tomcat/apache-tomcat-9.0.60/webapps
+webapps_link: /opt/tomcat/apache-tomcat-9.0.76/webapps
