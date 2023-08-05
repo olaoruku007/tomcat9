@@ -1,9 +1,14 @@
 ---
-- hosts: Test[3] 
-  become: true
+- name: This is an ansible playbook roles
+  hosts: Test[3]
+  become: yes
+  gather_facts: no
+
   roles:
-    - tomcat/
-#   - update-packages/
-    - firewalld
-#   - LAMP/
-#   - WordPress/
+
+#   - /home/ansible/ansible-roles/upgrade-packages
+   - /home/ansible/ansible-roles/firewalld
+    - /home/ansible/ansible-roles/tomcat
+#   - /home/ansible/ansible-roles/terraform
+#   - /home/ansible/ansible-roles/jenkins
+#   - /home/ansible/ansible-roles/maven
