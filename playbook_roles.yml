@@ -8,7 +8,7 @@
 
 #   - /home/ansible/ansible-roles/upgrade-packages
 #   - /home/ansible/ansible-roles/firewalld
-    - /home/ansible/ansible-roles/tomcat
+    - tomcat/
 #   - /home/ansible/ansible-roles/terraform
 #   - /home/ansible/ansible-roles/jenkins
 #   - /home/ansible/ansible-roles/maven
