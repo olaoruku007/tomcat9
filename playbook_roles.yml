@@ -1,9 +1,9 @@
 ---
-- hosts: Dev[1] 
+- hosts: Test[3] 
   become: true
   roles:
-#   - tomcat/
-    - update-packages/
-#   - firewalld
-    - LAMP/
-    - WordPress/
+    - tomcat/
+#   - update-packages/
+    - firewalld
+#   - LAMP/
+#   - WordPress/
