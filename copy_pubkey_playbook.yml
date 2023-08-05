@@ -1,5 +1,5 @@
 ---
-- hosts: Dev[2]
+- hosts: Test[3]
   become: true
   vars_files:
     - vars.yml
