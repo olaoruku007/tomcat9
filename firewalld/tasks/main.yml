@@ -1,12 +1,26 @@
-- name: Install Firewalld
-  dnf:
-    name: firewalld
-    state: present
+---
+# tasks file for firewalld
+
+  - name: install the latest version of firewalld
+    yum:
+      name: firewalld
+      state: latest
 
 
-- name: Start Firewalld
-  service:
-    name: firewalld
-    state: enabled
+  - name: Ensure Firewalld is started
+    systemd:
+        name: firewalld
+        state: started
+        enabled: true
+
+
+  - name: Firewalld to open the required port
+    firewalld:
+      port: 8080/tcp
+      permanent: yes
+      immediate: yes
+      state: enabled
+      zone: public
+
     
 
