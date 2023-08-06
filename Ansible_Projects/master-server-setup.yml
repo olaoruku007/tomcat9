@@ -1,1 +1,11 @@
+---
+- hosts: Test[3]
+  gather_facts: no
+  become: yes
 
+- name: Include copy-pubkey playbook
+  import_playbook: copy-pubkey.yml
+
+- name: Include ssh_connection_ansible_playbook playbook
+  import_playbook: ssh_connection_ansible_playbook.yml
+...
