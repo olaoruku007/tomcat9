@@ -64,7 +64,7 @@
 
   - name: copy tomcat-users.xml to tomcat_home/conf
     copy:
-      src: /home/ansible/ansible-roles/tomcat/files/tomcat-users.xml
+      src: tomcat/files/tomcat-users.xml
       dest: /opt/tomcat/apache-tomcat-9.0.76/conf
       remote_src: no
       owner: tomcat
