@@ -74,7 +74,7 @@
 
   - name: copy context.xml to tomcat_home/meta-inf
     copy:
-      src: /home/ansible/ansible-roles/tomcat/files/context.xml
+      src: tomcat/files/context.xml
       dest: /opt/tomcat/apache-tomcat-9.0.76/webapps/manager/META-INF/context.xml
       remote_src: no
       owner: tomcat
@@ -85,7 +85,7 @@
 
   - name: copy tomcat service to systemd
     copy:
-      src: /home/ansible/ansible-roles/tomcat/files/tomcat.service
+      src: tomcat/files/tomcat.service
       dest: /etc/systemd/system/
       remote_src: no
       owner: root
