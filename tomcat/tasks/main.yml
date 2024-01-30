@@ -93,10 +93,6 @@
     service:
       name: tomcat.service
       state: started
-
-  - name: Start tomcat service
-    service:
-      name: tomcat.service
       enabled: yes
 
 
