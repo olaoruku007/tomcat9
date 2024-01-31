@@ -57,6 +57,15 @@
         state: started
         enabled: true
 
+- name: Activate PHP Web Page
+  command: echo "<?php phpinfo(); ?>" > /var/www/html/info.php
+
+- name: Restart httpd
+  service:
+     name: httpd
+     state: restarted
+     enabled: true
+
 
 
 - name: Secure MySQL installation
