@@ -1,6 +1,6 @@
 ---
 - name: This is an ansible playbook roles
-  hosts: Dev[1]
+  hosts: Test[4]
   become: yes
   gather_facts: no
 
