@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Git Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/olaoruku007/tomcat9.git'
+            }
+        }
+        
+        stage('Run Tomcat Playbook') {
+            steps {
+                ansiblePlaybook credentialsId: 'ansible-credentials', installation: 'ansible1', inventory: '/opt/tomcat/.jenkins/workspace/test-pipeline/inventory', playbook: '/opt/tomcat/.jenkins/workspace/test-pipeline/playbook_roles.yml', vaultTmpPath: ''
+            }
+        }
+    }
+}
