@@ -1,6 +1,7 @@
 [Dev]
-10.1.30.106
-10.1.1.66
+10.1.12.70
+#10.1.30.106
+#10.1.1.66
 
 [Test]
 #10.1.3.169
@@ -11,8 +12,8 @@
 #10.1.4.237
 
 
-[local]
-127.0.0.1 ansible_connection=local
+#[local]
+#127.0.0.1 ansible_connection=local
 
 
 
