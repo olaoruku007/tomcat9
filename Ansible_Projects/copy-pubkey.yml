@@ -16,4 +16,4 @@
   - name: put pubkey
     lineinfile:
       path: "/home/ec2-user/.ssh/authorized_keys"
-      line: "{{ lookup('file', '/path/to/your/id_rsa.pub') }}"
+      line: "{{ lookup('file', '/home/ec2-user/id_rsa.pub') }}"
