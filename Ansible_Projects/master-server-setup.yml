@@ -1,5 +1,5 @@
 ---
-- hosts: Test[3]
+- hosts: Test[0]
   gather_facts: no
   become: yes
 
