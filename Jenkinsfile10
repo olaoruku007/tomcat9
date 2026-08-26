@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+       stage('Git-Checkout') {
+         steps {
+                git branch: 'main', url: 'https://github.com/olaoruku007/tomcat9.git'
+            }
+        }
+        
+        stage('run playbook') {
+         steps {
+                ansiblePlaybook becomeUser: null, credentialsId: 'ansible-id', installation: 'ansible2', inventory: '/opt/tomcat/.jenkins/workspace/new-pipeline/inventory', playbook: '/opt/tomcat/.jenkins/workspace/new-pipeline/playbook_roles.yml', sudoUser: null, vaultTmpPath: ''
+            }
+        }
+        
+        
+        
+    }
+}
