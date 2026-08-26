@@ -1,10 +1,10 @@
 ---
 # tasks file for tomcat
 
-  - name: install the latest version of java
-    yum:
-      name: java-17-openjdk
-      state: latest
+  # - name: install the latest version of java
+  #   yum:
+  #     name: java-17-openjdk
+  #     state: latest
 
   - name: Ensure group "tomcat group" exists
     group:
@@ -38,7 +38,7 @@
 
   - name: Unarchive a file that is already on the remote machine
     unarchive:
-      src:  /opt/tomcat/apache-tomcat-9.0.76.tar.gz
+      src:  /opt/tomcat/apache-tomcat-10.1.9.tar.gz
       dest: /opt/tomcat/
       remote_src: yes
       mode: 0755
@@ -48,7 +48,7 @@
 
   - name: Remove file (delete file)
     file:
-      path: /opt/tomcat/apache-tomcat-9.0.76.tar.gz
+      path: /opt/tomcat/apache-tomcat-10.1.9.tar.gz
       state: absent
 
 
@@ -56,7 +56,7 @@
   - name: copy tomcat-users.xml to tomcat_home/conf
     copy:
       src: tomcat/files/tomcat-users.xml
-      dest: /opt/tomcat/apache-tomcat-9.0.76/conf
+      dest: /opt/tomcat/apache-tomcat-10.1.9/conf
       remote_src: no
       owner: tomcat
       group: tomcat
@@ -66,7 +66,7 @@
   - name: copy context.xml to tomcat_home/meta-inf
     copy:
       src: tomcat/files/context.xml
-      dest: /opt/tomcat/apache-tomcat-9.0.76/webapps/manager/META-INF/context.xml
+      dest: /opt/tomcat/apache-tomcat-10.1.9/webapps/manager/META-INF/context.xml
       remote_src: no
       owner: tomcat
       group: tomcat
@@ -96,11 +96,11 @@
       enabled: yes
 
 
-  - name: download jenkins
-    get_url:
-      url: "{{ jenkins_pkg }}"
-      dest: /opt/tomcat/apache-tomcat-9.0.76/webapps
-      owner: root
-      group: root
-      mode: 0755
+  # - name: download jenkins
+  #   get_url:
+  #     url: "{{ jenkins_pkg }}"
+  #     dest: /opt/tomcat/apache-tomcat-9.0.76/webapps
+  #     owner: root
+  #     group: root
+  #     mode: 0755
 

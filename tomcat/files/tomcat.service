@@ -10,12 +10,12 @@ Group=tomcat
 
 
 
-Environment=CATALINA_PID=/opt/tomcat/apache-tomcat-9.0.76/temp/tomcat.pid
+Environment=CATALINA_PID=/opt/tomcat/apache-tomcat-10.1.9/temp/tomcat.pid
 
-Environment=CATALINA_HOME=/opt/tomcat/apache-tomcat-9.0.76
-Environment=CATALINA_BASE=/opt/tomcat/apache-tomcat-9.0.76
-ExecStart=/opt/tomcat/apache-tomcat-9.0.76/bin/catalina.sh start
-ExecStop=/opt/tomcat/apache-tomcat-9.0.76/bin/catalina.sh stop
+Environment=CATALINA_HOME=/opt/tomcat/apache-tomcat-10.1.9
+Environment=CATALINA_BASE=/opt/tomcat/apache-tomcat-10.1.9
+ExecStart=/opt/tomcat/apache-tomcat-10.1.9/bin/catalina.sh start
+ExecStop=/opt/tomcat/apache-tomcat-10.1.9/bin/catalina.sh stop
 
 RestartSec=10
 Restart=always

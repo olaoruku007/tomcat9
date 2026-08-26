@@ -1,13 +1,13 @@
 ---
 - name: This is an ansible playbook roles
-  hosts: Dev
+  hosts: prod
   become: yes
   gather_facts: no
 
   roles:
 
 #   - /home/ansible/ansible-roles/upgrade-packages
-#   - /home/ansible/ansible-roles/firewalld
+    - firewalld/
     - tomcat/
 #   - /home/ansible/ansible-roles/terraform
 #   - /home/ansible/ansible-roles/jenkins
